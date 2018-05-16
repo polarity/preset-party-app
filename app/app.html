@@ -2,26 +2,15 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Electron Boilerplate</title>
+  <title>Preset-Party: Bitwig Preset Manager</title>
 </head>
 <body>
 
-  <div id="app" class="container" style="display: none;">
-    <h1 id="greet"></h1>
-    <p>
-      Welcome to <a href="http://electron.atom.io" class="js-external-link">Electron</a> app running on this <strong id="os"></strong> machine.
-    </p>
-    <p>
-      App author: <strong id="author"></strong>
-    </p>
-    <p>
-      Environment: <strong id="env"></strong>
-    </p>
-    <p>
-      Electron version: <strong id="electron-version"></strong>
-    </p>
-  </div>
-
+  <div id="app" class="container">
+    <h1>Bitwig Preset Party</h1>
+    <p>Preset path: <span class="paths" id="repoPath"></span></p>
+    <p><a onclick="setPresetPath()">Set the path</a> to your Bitwig preset directory</p>
+    <p><a onclick="update()">Update</a> local files</p>
   <script src="app.js"></script>
 </body>
 </html>
