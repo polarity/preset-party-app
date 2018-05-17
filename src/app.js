@@ -30,7 +30,7 @@ try {
   localStorage = {}
 }
 let settings = Object.assign({
-  repoLocal: app.getPath('home') + '/Documents/Bitwig Studio/Library/Presets/preset-party'
+  repoLocal: app.getPath('documents') + '/Bitwig Studio/Library/Presets/preset-party'
 }, localStorage)
 
 /**
