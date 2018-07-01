@@ -16,6 +16,7 @@ module.exports = env => {
     resolve: {
       extensions: ['.jsx', '.js', '.json', '.less'],
       alias: {
+        images: path.resolve(__dirname, '../images'),
         style: path.resolve(__dirname, '../src/stylesheets'),
         env: path.resolve(__dirname, `../config/env_${env}.json`)
       }
@@ -23,6 +24,10 @@ module.exports = env => {
     devtool: 'source-map',
     module: {
       rules: [
+        {
+          test: /\.(svg|woff2?|ttf|eot|jpe?g|png|gif)(\?.*)?$/i,
+          use: 'file-loader'
+        },
         {
           test: /\.js$/,
           exclude: /node_modules/,

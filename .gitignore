@@ -11,3 +11,6 @@ Thumbs.db
 /app/style.css
 /app/background.js
 /app/**/*.map
+/app/**/*.jpg
+/app/**/*.png
+
