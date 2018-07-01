@@ -1,12 +1,12 @@
 import { h, render, Component } from 'preact'
 import { remote } from 'electron'
-import jetpack from 'fs-jetpack'
 import Git from 'nodegit'
 import style from './style'
 
 export default class PresetsBitwig extends Component {
-  constructor () {
+  constructor (props) {
     super()
+    console.log(style)
     // init state
     this.state = {
       gitState: {
@@ -17,9 +17,6 @@ export default class PresetsBitwig extends Component {
         repoLocal: false
       }
     }
-
-    this.app = remote.app
-    this.appDir = jetpack.cwd(this.app.getAppPath())
 
     // try and read the settings from the
     // local storage
@@ -34,7 +31,7 @@ export default class PresetsBitwig extends Component {
     // and overwrite it with the found settings from the local storage
     this.setState({
       settings: Object.assign({
-        repoLocal: this.app.getPath('documents') + '/Bitwig Studio/Library/Presets/preset-party'
+        repoLocal: props.app.getPath('documents') + '/Bitwig Studio/Library/Presets/preset-party'
       }, this.localStorage)
     })
   }
@@ -114,7 +111,7 @@ export default class PresetsBitwig extends Component {
     }
 
     return (
-      <div class='ComponentPresetBitwig' class={style.container}>
+      <div class={style.container}>
         <h2>{this.props.title}</h2>
         <div class={style.actionWrapper}>
           <ElUpdate />
