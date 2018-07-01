@@ -1,4 +1,4 @@
-import './stylesheets/main.css'
+import 'style/main'
 import './helpers/context_menu.js'
 import './helpers/external_links.js'
 

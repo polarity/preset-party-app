@@ -2,6 +2,7 @@ import { h, render, Component } from 'preact'
 import { remote } from 'electron'
 import jetpack from 'fs-jetpack'
 import Git from 'nodegit'
+import style from './style'
 
 export default class Main extends Component {
   constructor () {
@@ -94,7 +95,7 @@ export default class Main extends Component {
     }
 
     return (
-      <div id='app' class='container'>
+      <div id='app' class={style.container}>
         <h1>Bitwig Preset Party</h1>
         <p>Preset path: <span class='paths'>{this.state.settings.repoLocal}</span></p>
         <p><a onclick={this.handleSetPresetPath.bind(this)}>Set the path</a> to your Bitwig preset directory</p>
