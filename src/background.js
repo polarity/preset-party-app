@@ -5,7 +5,7 @@
 
 import path from 'path'
 import url from 'url'
-import { app, Menu } from 'electron'
+import { app, Menu, shell} from 'electron'
 import { devMenuTemplate } from './menu/dev_menu_template'
 import { editMenuTemplate } from './menu/edit_menu_template'
 import createWindow from './helpers/window'
@@ -35,7 +35,7 @@ app.on('ready', () => {
 
   const mainWindow = createWindow('main', {
     width: 500,
-    height: 500,
+    height: 550,
     resizable: false
   })
 
@@ -46,7 +46,6 @@ app.on('ready', () => {
       slashes: true
     })
   )
-
   if (env.name === 'development') {
     mainWindow.openDevTools()
   }

@@ -6,9 +6,12 @@ import style from './style'
 export default class PresetsBitwig extends Component {
   constructor (props) {
     super()
-    console.log(style)
     // init state
     this.state = {
+      repo: {
+        remote: props.remoterepo,
+        localdir: props.localdir
+      },
       gitState: {
         ahead: 0
       },
@@ -21,7 +24,7 @@ export default class PresetsBitwig extends Component {
     // try and read the settings from the
     // local storage
     try {
-      this.localStorage = JSON.parse(window.localStorage.getItem('settings'))
+      this.localStorage = JSON.parse(window.localStorage.getItem('settings-' + this.state.repo.localdir))
     } catch (err) {
       this.localStorage = {}
     }
@@ -31,7 +34,7 @@ export default class PresetsBitwig extends Component {
     // and overwrite it with the found settings from the local storage
     this.setState({
       settings: Object.assign({
-        repoLocal: props.app.getPath('documents') + '/Bitwig Studio/Library/Presets/preset-party'
+        repoLocal: props.app.getPath('documents') + '/Bitwig Studio/Library/Presets/' + this.state.repo.localdir
       }, this.localStorage)
     })
   }
@@ -43,14 +46,14 @@ export default class PresetsBitwig extends Component {
   handleUpdate () {
     let repository
     const that = this
-    Git.Clone('https://github.com/polarity/bitwig-presets.git', this.state.settings.repoLocal)
+    Git.Clone(this.state.repo.remote, this.state.settings.repoLocal)
     .then(() => {
-      console.log('Cloning Done')
+      console.info('Cloning Done')
     })
     .catch((err) => {
-      console.log('Local Repo exists, skip cloning', err)
+      console.info('Local Repo exists, skip cloning', err)
     }).done(() => {
-      console.log('Update local working dir!')
+      console.info('Update local working dir!')
       this.setState({updatingRepo: 'process'})
       Git.Repository.open(this.state.settings.repoLocal).then((repo) => {
         console.info('Fetch All from Remote')
@@ -84,7 +87,7 @@ export default class PresetsBitwig extends Component {
       if (data && data.length > 0) {
         this.setState({
           settings: {
-            repoLocal: data[0] + '/preset-party'
+            repoLocal: data[0] + '/' + this.state.repo.localdir
           }
         })
         window.localStorage.setItem('settings', JSON.stringify(this.state.settings))

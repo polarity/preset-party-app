@@ -5,6 +5,7 @@ import './helpers/external_links.js'
 import { h, render } from 'preact'
 import Main from './components/mainApp/index.js'
 import env from 'env'
+import {app, shell, BrowserWindow} from 'electron'
 
 // Holy crap! This is browser window with HTML and stuff, but I can read
 // files from disk like it's node.js! Welcome to Electron world :)
