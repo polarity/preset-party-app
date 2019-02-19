@@ -59,9 +59,13 @@ export default class PresetsBitwig extends Component {
         console.info('Fetch All from Remote')
         repository = repo
         return repository.fetchAll()
-      }).then(() => {
+      })
+      .then(() => {
         console.info('Merge Branches')
         return repository.mergeBranches('master', 'origin/master')
+      })
+      .catch((err) => {
+        console.log('folgendes: ', err)
       })
       .done((data) => {
         console.info('Update Done!', data)
