@@ -38,8 +38,8 @@
     "preact": "^8.2.9"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.47",
-    "@babel/preset-env": "^7.0.0-beta.47",
+    "@babel/core": "^7.3.0",
+    "@babel/preset-env": "^7.3.0",
     "autoprefixer": "^8.6.4",
     "babel-loader": "^8.0.0-beta.2",
     "babel-plugin-transform-object-rest-spread": "^7.0.0-beta.3",
