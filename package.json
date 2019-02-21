@@ -2,7 +2,7 @@
   "name": "preset-party",
   "productName": "Preset Party",
   "description": "Download and publish DAW presets",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "author": "Robert Agthe <robert@scriptshit.de>",
   "copyright": "© 2018, Robert Agthe",
