@@ -46,6 +46,7 @@ export default class PresetsBitwig extends Component {
   handleUpdate () {
     let repository
     const that = this
+    this.setState({updatingRepo: 'process'})
     Git.Clone(this.state.repo.remote, this.state.settings.repoLocal)
     .then(() => {
       console.info('Cloning Done')
@@ -54,7 +55,6 @@ export default class PresetsBitwig extends Component {
       console.info('Local Repo exists, skip cloning', err)
     }).done(() => {
       console.info('Update local working dir!')
-      this.setState({updatingRepo: 'process'})
       Git.Repository.open(this.state.settings.repoLocal).then((repo) => {
         console.info('Fetch All from Remote')
         repository = repo
@@ -119,7 +119,7 @@ export default class PresetsBitwig extends Component {
 
     return (
       <div class={style.container}>
-        <h2>{this.props.title}</h2>
+        <h2>{this.props.title} {this.state.updatingRepo === 'process' && '(downloading)'}</h2>
         <div class={style.actionWrapper}>
           <ElUpdate />
           <img class={style.images} onclick={this.handleSetPresetPath.bind(this)} title='Set the path to your Bitwig preset directory' src='data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDYwIDYwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA2MCA2MDsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiPgo8Zz4KCTxwYXRoIGQ9Ik0xNCwyMy41Yy0wLjI1NCwwLTAuNDc5LDAuMTcyLTAuNTQ1LDAuNDE3TDIsNTIuNXYxYzAsMC43MzQtMC4wNDcsMSwwLjU2NSwxaDQ0Ljc1OWMxLjE1NiwwLDIuMTc0LTAuNzc5LDIuNDUtMS44MTMgICBMNjAsMjQuNWMwLDAsMC0wLjYyNSwwLTFIMTR6IiBmaWxsPSIjRkZGRkZGIi8+Cgk8cGF0aCBkPSJNMTIuNzMxLDIxLjVINTNoMXYtNi4yNjhjMC0xLjUwNy0xLjIyNi0yLjczMi0yLjczMi0yLjczMkgyNi41MTVsLTUtN0gyLjczMkMxLjIyNiw1LjUsMCw2LjcyNiwwLDguMjMydjQxLjc5NiAgIGwxMC4yODItMjYuNzE3QzEwLjU1NywyMi4yNzksMTEuNTc1LDIxLjUsMTIuNzMxLDIxLjV6IiBmaWxsPSIjRkZGRkZGIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==' />

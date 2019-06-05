@@ -16,7 +16,8 @@ export default class Main extends Component {
     return (<div id='App' class={style.app}>
       <Header />
       <div class={style.repolist}>
-        <PresetsBitwig app={this.app} remoterepo='https://github.com/polarity/bitwig-presets.git' localdir='preset-party-competition' title='Bitwig:  Preset Competition' />
+        <PresetsBitwig app={this.app} remoterepo='https://github.com/polarity/polarity-music-tools.git' localdir='polarity-music-tools' title='Bitwig: Polarity Tools' />
+        <PresetsBitwig app={this.app} remoterepo='https://github.com/polarity/bitwig-community-presets.git' localdir='preset-party-competition' title='Bitwig: Community Presets' />
         <PresetsBitwig app={this.app} remoterepo='https://github.com/stylemistake/bitwig-presets-sm.git' localdir='preset-party-stylemistake' title='Bitwig: Stylemistake' />
         <PresetsBitwig app={this.app} remoterepo='https://github.com/jrelo/bitwig_presetz' localdir='preset-party-jrelo' title='Bitwig: jRelo' />
         <PresetsBitwig app={this.app} remoterepo='https://github.com/cyanit/Bitwig-Studio-Presets.git' localdir='preset-party-cyanit' title='Bitwig: Cyanit' />
