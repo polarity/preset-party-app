@@ -94,7 +94,7 @@ export default class PresetsBitwig extends Component {
             repoLocal: data[0] + '/' + this.state.repo.localdir
           }
         })
-        window.localStorage.setItem('settings', JSON.stringify(this.state.settings))
+        window.localStorage.setItem('settings-' + this.state.repo.localdir, JSON.stringify(this.state.settings))
       }
     })
   }
